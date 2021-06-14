@@ -1,0 +1,66 @@
+<html>
+    <head>
+
+    </head>
+        <script type="text/javascript" src="https://connect.facebook.net/pt_BR/sdk.js"></script>
+        <script src="https://connect.facebook.net/pt_BR/all.js"></script>
+    <body>
+ 
+        <div id="fb-root"></div>
+
+        <script language="JavaScript">
+            function facebook_init() {
+              FB.init({
+                appId            : '108231574686116',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v10.0'
+              });
+            };
+                   
+           function init(){
+                FB.api(
+                '/104878505020685/feed',
+                 'GET',
+                 {access_token : "EAABib6CQCaQBAHO4uwG2UgBUQ1JeRymbJ7ZCtZAiKaTtqptG746kRaQrEHN1JL0bSSpTgCgJhggLZBmG6jipHNqv3p0bPkMlbBZBHfgvpnfwNLHaXZB9fs6Lmcr5kF1C9AvpLEWN1KeJDBCRkD9EtrsNVwsEODwtJNSbA67tKXgZDZD"},
+                    function(response) {
+                        // Insert your code here
+                        function getFields(input, field) {
+                         var output = [];
+                         for (var i=0; i < input.length ; ++i)
+                        output.push(input[i][field]);
+                         return output;
+                        }
+
+                        var result = getFields(data, "id");
+                        
+                        var i;
+                        for (i = 0; i < result.length; i++) {
+                            var input = result[i];
+
+                            var fields = input.split('_');
+
+                            var page = fields[0];
+                            var post = fields[1];
+                            
+                            var html='';
+                                html+='<div>'+'https://www.facebook.com/' + page + '/posts/' + post+ '</div>';
+                                                        
+                            document.getElementById('cardContainer').innerHTML+= html;
+                        }
+                    }
+                );
+
+            }
+            
+            
+           
+            
+            facebook_init()
+            init();
+                                       
+
+        </script> 
+
+    </body>
+</html>

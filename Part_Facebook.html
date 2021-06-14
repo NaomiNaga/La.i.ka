@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+        <script src="https://connect.facebook.net/en_US/all.js"></script>
+    </head>
+
+    <body>
+        <p id="show"></p>
+        
+        <div id="fb-root"></div>
+
+        <script language="JavaScript">
+            function facebook_init() {
+              FB.init({
+                appId            : '108231574686116',
+                autoLogAppEvents : true,
+                xfbml            : true,
+                version          : 'v10.0'
+              });
+            };
+                   
+           function init(){
+                FB.api(
+                '/LaikaPlugin/feed',
+                 'GET',
+                 {access_token: 'EAABib6CQCaQBAGZAWbkOlZBS5O35ZA6aewyRcNSatmL6oQC2LBL5qKIDZBTBglzVERatOGftcA0XNN03Tr9GA58hUyMKaCSSZArUzwKU1kwUm3zkGtIwzbslri841ZAnaI5ZAZCjGG0o9VYTVFN3cx1OsakU9NaC9bAzuRyun7QiG3QYR37PlhhvUmkhvpkEBFu74Aq1a3gG6AZDZD'},
+                    function(response) {
+                        document.getElementById("show").innerHTML = JSON.stringify(response);
+                        //document.getElementById("show").innerHTML = response.data[0].story + "<br />" + response.data[0].created_time + "<br />" + response.data[0].id;
+                    }
+                );
+            }
+
+            
+
+            facebook_init()
+            init();
+                                       
+        </script>               
+    </body>
+</html>
